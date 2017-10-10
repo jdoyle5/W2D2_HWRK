@@ -73,5 +73,13 @@ class Board
   end
 
   def winner
+    player1_rocks = @cups[6].length
+    player2_rocks = @cups[13].length
+
+    if player1_rocks == player2_rocks
+      :draw
+    else
+      player1_rocks > player2_rocks ? @name1 : @name2
+    end
   end
 end
