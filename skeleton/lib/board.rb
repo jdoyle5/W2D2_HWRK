@@ -38,12 +38,20 @@ class Board
       @cups[13] << rocks.pop if (current_player_name == @name2 && cup_idx == 13)
       @cups[cup_idx] << rocks.pop if (cup_idx != 6 && cup_idx != 13)
     end
-    render
 
+    render
+    next_turn(cup_idx)
   end
 
   def next_turn(ending_cup_idx)
     # helper method to determine what #make_move returns
+    if ending_cup_idx == 6 || ending_cup_idx == 13
+      :prompt
+    elsif @cups[ending_cup_idx].length == 1
+      :switch
+    else
+    ending_cup_idx
+    end
   end
 
   def render
